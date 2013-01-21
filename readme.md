@@ -1,13 +1,28 @@
-## Laravel 4.x
+# HaychKew (HQ) - A personal home page app
 
-### A Framework For Web Artisans
+HaychKew is a simple, personal home page app to allow you to create a quick starting page
+containing comminly visited links, reading list, and other modules.
 
-[Official Documentation](http://four.laravel.com) (Under Active Development)
+The project is based on the [Laravel](http://www.laravel.com/) framework, version 4.
 
-### Contributing To Laravel
+## Server requirements
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+PHP >= 5.3.7
 
-### License
+## Installation
 
-The Laravel framework is open-sourced software license under the [MIT license](http://opensource.org/licenses/MIT)
+- Clone the repository to your preferred location
+- Install composer (http://getcomposer.org/download/)
+- `php composer.phar install`
+
+## Contributing to HaychKew
+
+Contributions are encouraged and welcome; to keep things organised, all bugs and requests should be
+opened in the github issues tab for the main project, at https://github.com/duellsy/haychkew/issues.
+
+All issues should have either [bug], [request], or [suggestion] prefixed in the title.
+
+
+## License
+
+HaychKew is open-sourced software licensed under the MIT License.
