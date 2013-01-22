@@ -2,6 +2,10 @@
 
 class BaseController extends Controller {
 
+
+	public $layout = 'templates.bootstrap.index';
+
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

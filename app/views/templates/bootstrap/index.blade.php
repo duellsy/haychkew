@@ -49,6 +49,8 @@
 
       @yield('content')
 
+      <a href="{{ URL::to('connect/pocket') }}">Connect GetPocket</a>
+
     </div> <!-- /container -->
 
     <!-- Le javascript

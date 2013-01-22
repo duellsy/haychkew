@@ -38,4 +38,10 @@ class User extends Eloquent implements UserInterface {
 		return $this->password;
 	}
 
+
+	public function bookmarks()
+	{
+		return $this->hasMany('Bookmark');
+	}
+
 }

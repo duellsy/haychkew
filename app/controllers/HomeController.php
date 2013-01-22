@@ -17,7 +17,11 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		$data = array(
+			'groups' => Group::with('bookmarks')->get()
+		);
+
+		$this->layout->nest('content', 'hello', $data);
 	}
 
 }
