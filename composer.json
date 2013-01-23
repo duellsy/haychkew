@@ -1,7 +1,8 @@
 {
 	"require": {
 		"laravel/framework": "4.0.*",
-		"guzzle/guzzle": "*"
+		"guzzle/guzzle": "*",
+		"duellsy/getpocket": "*"
 	},
 	"autoload": {
 		"classmap": [
