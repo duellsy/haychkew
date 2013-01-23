@@ -15,3 +15,8 @@ Route::get('/', 'HomeController@showWelcome');
 
 Route::get('settings', 'SettingsController@index');
 Route::post('settings', 'SettingsController@save');
+
+
+Route::any('pocket/connect', 'PocketController@connect');
+Route::any('pocket/receiveToken', 'PocketController@receiveToken');
+Route::any('pocket/return', 'PocketController@return');

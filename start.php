@@ -41,7 +41,7 @@ $app->instance('path.base', __DIR__);
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('localhost', '*.dev', '*.local'),
+	'local' => array('localhost', '*.dev', '*.local', '*.loc'),
 
 ));
 

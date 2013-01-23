@@ -34,10 +34,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">HaychKew</a>
+          <a class="brand" href="{{ URL::to('/') }}">HaychKew</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
               <li><a href="{{ URL::to('add') }}">Add link</a></li>
               <li><a href="{{ URL::to('settings') }}">Settings</a></li>
             </ul>
