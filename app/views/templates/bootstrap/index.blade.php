@@ -39,6 +39,7 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="{{ URL::to('add') }}">Add link</a></li>
+              <li><a href="{{ URL::to('settings') }}">Settings</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -52,23 +53,6 @@
       <a href="{{ URL::to('connect/pocket') }}">Connect GetPocket</a>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-alert.js"></script>
-    <script src="js/bootstrap-modal.js"></script>
-    <script src="js/bootstrap-dropdown.js"></script>
-    <script src="js/bootstrap-scrollspy.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/bootstrap-tooltip.js"></script>
-    <script src="js/bootstrap-popover.js"></script>
-    <script src="js/bootstrap-button.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-carousel.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script>
 
   </body>
 </html>

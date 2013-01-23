@@ -11,14 +11,14 @@ class MakeSettingsTable extends Migration {
 	 */
 	public function up()
 	{
-
+		Schema::dropIfExists('settings');
 		Schema::create('settings', function($table)
 		{
 			$table->increments('id');
-			$table->string('key');
+			$table->string('var');
 			$table->string('value');
 
-			$table->unique('key');
+			$table->unique('var');
 
 			$table->timestamps();
 		});
@@ -26,8 +26,20 @@ class MakeSettingsTable extends Migration {
 		// Initial installation settings
 		$settings = array(
 			array(
-				'key'	=> 'site_name',
+				'var'	=> 'site_name',
 				'value'	=> 'HaychKew',
+				'created_at'	=> new DateTime(),
+				'updated_at'	=> new DateTime()
+			),
+			array(
+				'var'	=> 'pocket_consumer_key',
+				'value'	=> '',
+				'created_at'	=> new DateTime(),
+				'updated_at'	=> new DateTime()
+			),
+			array(
+				'var'	=> 'pocket_access_token',
+				'value'	=> '',
 				'created_at'	=> new DateTime(),
 				'updated_at'	=> new DateTime()
 			),

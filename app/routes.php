@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+
+Route::get('settings', 'SettingsController@index');
+Route::post('settings', 'SettingsController@save');
