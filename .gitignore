@@ -3,4 +3,5 @@ composer.phar
 composer.lock
 .DS_Store
 /app/config/local/
+/app/config/database.php
 /workbench/
