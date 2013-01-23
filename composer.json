@@ -2,7 +2,7 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"guzzle/guzzle": "*",
-		"duellsy/getpocket": "*"
+		"duellsy/getpocket": "dev-develop"
 	},
 	"autoload": {
 		"classmap": [
