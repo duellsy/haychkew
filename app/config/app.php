@@ -106,7 +106,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Duellsy\Getpocket\GetpocketServiceProvider'
+		'Duellsy\Pockpack\PockpackServiceProvider'
 
 	),
 
@@ -167,7 +167,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Getpocket'			=> 'Duellsy\Getpocket\Facades\Getpocket'
+		'Pockpack'		  => 'Duellsy\Pockpack\Facades\Pockpack'
 
 	),
 
