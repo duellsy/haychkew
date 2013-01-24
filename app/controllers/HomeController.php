@@ -19,7 +19,9 @@ class HomeController extends BaseController {
 	{
 
 		$data = array(
-			'groups' => Group::with('bookmarks')->get(),
+			'groups' => Group::with('bookmarks')
+				->orderBy('order')
+				->get(),
 			// 'reading_list'	=> $reading_list->list
 		);
 
