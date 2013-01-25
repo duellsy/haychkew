@@ -56,7 +56,9 @@ View::composer('partials/readinglist', function($event){
             'detailType'    => 'complete'
         );
 
-        $list = Pockpack::retrieve($pocket_consumer_key->value, $pocket_access_token->value, $options);
+        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $list = $pockpack->retrieve($options);
+
         $event->view->with(
             'reading_list',
             $list->list
