@@ -105,8 +105,7 @@ return array(
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Duellsy\Pockpack\PockpackServiceProvider'
+		'Illuminate\Workbench\WorkbenchServiceProvider'
 
 	),
 
@@ -166,8 +165,7 @@ return array(
 		'Session'         => 'Illuminate\Support\Facades\Session',
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
-		'View'            => 'Illuminate\Support\Facades\View',
-		'Pockpack'		  => 'Duellsy\Pockpack\Facades\Pockpack'
+		'View'            => 'Illuminate\Support\Facades\View'
 
 	),
 

@@ -1,4 +1,10 @@
 <div class="reading-list">
+<div class="input-append">
+    <form action="{{ URL::to('pocket/add_link') }}" method="post">
+        <input class="span10" id="url" name="url" type="text">
+        <button class="btn" type="submit"><i class="icon-plus"></i> Add</button>
+    </form>
+</div>
 @if($connected)
     @foreach($reading_list as $link)
     <div class="row-fluid">

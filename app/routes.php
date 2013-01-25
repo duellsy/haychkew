@@ -23,6 +23,7 @@ Route::any('pocket/return', 'PocketController@return');
 
 Route::any('pocket/action/{action}/{item_id}', 'PocketController@action');
 
+Route::any('pocket/add_link', 'PocketController@add_link');
 
 // Composers
 

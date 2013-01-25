@@ -106,4 +106,28 @@ class PocketController extends BaseController {
 
     }
 
+
+
+
+    public function add_link()
+    {
+
+        $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
+        $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
+
+        $input = Input::all();
+        $link_info = array(
+            'url'       => $input['url']
+        );
+
+        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+
+        $pockpack_q->add($link_info);
+        $pockpack->send($pockpack_q);
+
+        return Redirect::to('/');
+
+    }
+
 }
