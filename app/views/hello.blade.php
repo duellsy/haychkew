@@ -17,9 +17,21 @@
 
     <div class="column span6">
         <h3>Pocket reading list</h3>
-        @include('partials/readinglist')
+        <div id="list-holder"><h4>Loading...</h4></div>
     </div>
 
 </div>
+
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+        url: '{{ URL::to('pocket/reading_list') }}'
+    }).done(function(data){
+        console.log(data);
+        $('#list-holder').html(data);
+    });
+});
+</script>
 
 @stop

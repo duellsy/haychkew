@@ -10,7 +10,7 @@
     <div class="row-fluid">
 
         <div class="column span9">
-            <a href="{{ $link->given_url }}">
+            <a target="_blank" href="{{ $link->given_url }}">
                 @if(isset($link->given_title) AND $link->given_title != '')
                 {{ $link->given_title }}
                 @elseif(isset($link->resolved_title) AND $link->resolved_title != '')

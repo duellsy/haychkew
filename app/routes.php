@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('settings', 'SettingsController@index');
 Route::post('settings', 'SettingsController@save');
 
+Route::any('pocket/reading_list', 'PocketController@reading_list');
 
 Route::any('pocket/connect', 'PocketController@connect');
 Route::any('pocket/receiveToken', 'PocketController@receiveToken');
@@ -36,35 +37,3 @@ View::composer('templates.bootstrap.index', function($event){
 
 });
 
-View::composer('partials/readinglist', function($event){
-
-    $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
-    $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
-
-    if( ! $pocket_consumer_key
-        OR ! $pocket_access_token
-        OR $pocket_consumer_key->value == ''
-        OR $pocket_access_token->value == '') {
-
-        $event->view->with('connected', false);
-
-    } else {
-
-        $event->view->with('connected', true);
-
-        $options = array(
-            'state'         => 'unread',
-            'detailType'    => 'complete'
-        );
-
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $list = $pockpack->retrieve($options);
-
-        $event->view->with(
-            'reading_list',
-            $list->list
-        );
-
-    }
-
-});

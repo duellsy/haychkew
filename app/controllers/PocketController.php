@@ -1,4 +1,7 @@
 <?php
+use Duellsy\Pockpack\Pockpack;
+use Duellsy\Pockpack\PockpackAuth;
+use Duellsy\Pockpack\PockpackQueue;
 
 class PocketController extends BaseController {
 
@@ -6,9 +9,9 @@ class PocketController extends BaseController {
     {
 
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
-        $pocket_auth = new Duellsy\Pockpack\PockpackAuth();
+        $pocket_auth = new PockpackAuth();
         $request_token = $pocket_auth->connect($pocket_consumer_key->value);
-        // $request_token = Duellsy\Pockpack\PockpackAuth::connect($pocket_consumer_key->value);
+        // $request_token = PockpackAuth::connect($pocket_consumer_key->value);
 
         setcookie('gpcode', $request_token);
 
@@ -24,7 +27,7 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $request_token = $_COOKIE['gpcode'];
 
-        $pockpack = new Duellsy\Pockpack\PockpackAuth();
+        $pockpack = new PockpackAuth();
         $access_token = $pockpack->receiveToken($pocket_consumer_key->value, $request_token);
 
         $setting = Setting::where('var', 'pocket_access_token')->first();
@@ -35,6 +38,38 @@ class PocketController extends BaseController {
 
     }
 
+
+
+    public function reading_list() {
+        $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
+        $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
+
+        if( ! $pocket_consumer_key
+            OR ! $pocket_access_token
+            OR $pocket_consumer_key->value == ''
+            OR $pocket_access_token->value == '') {
+
+            return View::make('partials/reading_list', array(
+                'connected'     => false
+            ));
+
+        } else {
+
+            $options = array(
+                'state'         => 'unread',
+                'detailType'    => 'complete'
+            );
+
+            $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+            $list = $pockpack->retrieve($options);
+
+            return View::make('partials/readinglist', array(
+                'reading_list'  => $list->list,
+                'connected'     => true
+            ));
+
+        }
+    }
 
 
     public function action($action, $item_id)
@@ -49,8 +84,8 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
 
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+        $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new PockpackQueue();
         $pockpack_q->favorite($item_id);
         $pockpack->send($pockpack_q);
 
@@ -65,8 +100,8 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
 
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+        $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new PockpackQueue();
         $pockpack_q->unfavorite($item_id);
         $pockpack->send($pockpack_q);
 
@@ -81,8 +116,8 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
 
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+        $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new PockpackQueue();
         $pockpack_q->archive($item_id);
         $pockpack->send($pockpack_q);
 
@@ -97,8 +132,8 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $pocket_access_token = Setting::where('var', 'pocket_access_token')->first();
 
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+        $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new PockpackQueue();
         $pockpack_q->delete($item_id);
         $pockpack->send($pockpack_q);
 
@@ -120,8 +155,8 @@ class PocketController extends BaseController {
             'url'       => $input['url']
         );
 
-        $pockpack = new Duellsy\Pockpack\Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
-        $pockpack_q = new Duellsy\Pockpack\PockpackQueue();
+        $pockpack = new Pockpack($pocket_consumer_key->value, $pocket_access_token->value);
+        $pockpack_q = new PockpackQueue();
 
         $pockpack_q->add($link_info);
         $pockpack->send($pockpack_q);

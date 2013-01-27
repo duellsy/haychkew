@@ -2,7 +2,8 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"guzzle/guzzle": "*",
-		"duellsy/pockpack": "2.*"
+		"duellsy/pockpack": "2.*",
+		"jasonlewis/expressive-date": "v1.0.1"
 	},
 	"autoload": {
 		"classmap": [
