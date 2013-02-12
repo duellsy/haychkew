@@ -89,7 +89,7 @@ class PocketController extends BaseController {
         $pockpack_q->favorite($item_id);
         $pockpack->send($pockpack_q);
 
-        return Redirect::to('/');
+        // return Redirect::to('/');
 
     }
 
@@ -105,7 +105,7 @@ class PocketController extends BaseController {
         $pockpack_q->unfavorite($item_id);
         $pockpack->send($pockpack_q);
 
-        return Redirect::to('/');
+        // return Redirect::to('/');
 
     }
 
@@ -121,7 +121,7 @@ class PocketController extends BaseController {
         $pockpack_q->archive($item_id);
         $pockpack->send($pockpack_q);
 
-        return Redirect::to('/');
+        // return Redirect::to('/');
 
     }
 
@@ -137,7 +137,7 @@ class PocketController extends BaseController {
         $pockpack_q->delete($item_id);
         $pockpack->send($pockpack_q);
 
-        return Redirect::to('/');
+        // return Redirect::to('/');
 
     }
 

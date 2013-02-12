@@ -28,8 +28,8 @@ $(document).ready(function(){
     $.ajax({
         url: '{{ URL::to('pocket/reading_list') }}'
     }).done(function(data){
-        console.log(data);
         $('#list-holder').html(data);
+        $('.tipsy').tipsy({gravity: 's'});
     });
 });
 </script>

@@ -7,7 +7,7 @@
 </div>
 @if($connected)
     @foreach($reading_list as $link)
-    <div class="row-fluid">
+    <div class="row-fluid bookmark-block <?php echo $link->favorite?'favorite':'not-favorite' ?>">
 
         <div class="column span9">
             <a target="_blank" href="{{ $link->given_url }}">
@@ -25,13 +25,10 @@
 
         <div class="column span3">
             <div class="btn-group pull-right">
-                <a class="btn btn-mini" href="{{ URL::to('pocket/action', array('archive', $link->item_id)) }}"><i class="icon-ok"></i></a>
-                <a class="btn btn-mini" href="{{ URL::to('pocket/action', array('delete', $link->item_id)) }}"><i class="icon-remove"></i></a>
-                @if( $link->favorite )
-                <a class="btn btn-mini" href="{{ URL::to('pocket/action', array('unfavorite', $link->item_id)) }}"><i class="icon-star"></i></a>
-                @else
-                <a class="btn btn-mini" href="{{ URL::to('pocket/action', array('favorite', $link->item_id)) }}"><i class="icon-star-empty"></i></a>
-                @endif
+                <a class="tipsy btn btn-mini archive-link" data-id="{{ $link->item_id }}" href="#" title="Archive link"><i class="icon-ok"></i></a>
+                <a class="tipsy btn btn-mini delete-link" data-id="{{ $link->item_id }}" href="#" title="Remove link"><i class="icon-remove"></i></a>
+                <a class="tipsy btn btn-mini unfavorite-link" data-id="{{ $link->item_id }}" href="#" title="Un-favorite link"><i class="icon-star"></i></a>
+                <a class="tipsy btn btn-mini favorite-link" data-id="{{ $link->item_id }}" href="#" title="Favorite link"><i class="icon-star-empty"></i></a>
             </div>
 
             @if(isset($link->has_image) AND $link->has_image == "1" AND isset( $link->image ))
@@ -43,7 +40,7 @@
     </div>
     <?php //var_dump($link);?>
 
-    <hr />
+    <hr id="hr-{{ $link->item_id }}" />
     @endforeach
 @else
     <a href="{{ URL::to('settings') }}">Connect pocket account from settings page</a>
