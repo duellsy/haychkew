@@ -8,7 +8,7 @@ $( document ).ready( function() {
 		$.ajax({
 			url: "/pocket/action/archive/" + $id,
 			success: function( data ) {
-				$bm.remove();
+				$bm.slideUp();
 				$( '#hr-' + $id ).remove();
 			}
 		});
@@ -25,7 +25,7 @@ $( document ).ready( function() {
 		$.ajax({
 			url: "/pocket/action/delete/" + $id,
 			success: function( data ) {
-				$bm.remove();
+				$bm.slideUp();
 				$( '#hr-' + $id ).remove();
 			}
 		});
