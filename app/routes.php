@@ -33,7 +33,7 @@ View::composer('templates.bootstrap.index', function($event){
     $site_name = Setting::where('var', 'site_name')->first();
     $site_name = $site_name->value;
 
-    $event->view->with('site_name', $site_name);
+    $event->with('site_name', $site_name);
 
 });
 
