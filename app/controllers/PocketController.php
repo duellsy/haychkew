@@ -11,11 +11,14 @@ class PocketController extends BaseController {
         $pocket_consumer_key = Setting::where('var', 'pocket_consumer_key')->first();
         $pocket_auth = new PockpackAuth();
         $request_token = $pocket_auth->connect($pocket_consumer_key->value);
-        // $request_token = PockpackAuth::connect($pocket_consumer_key->value);
 
         setcookie('gpcode', $request_token);
 
-        header('Location: ' . $pocket_auth->getBaseUrl() . '/auth/authorize?request_token='.$request_token.'&redirect_uri='. URL::to('pocket/receiveToken'));
+        header('Location: ' . $pocket_auth->getBaseUrl()
+            . '/auth/authorize?request_token='
+            . $request_token
+            . '&redirect_uri='
+            . URL::to('pocket/receiveToken'));
         exit;
 
     }
